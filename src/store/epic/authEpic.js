@@ -4,15 +4,7 @@ import { Observable } from 'rxjs'
 import  AuthAction from "../actions/authAction";
 
 import * as firebase from 'firebase';
-var config = {
-    apiKey: "AIzaSyDqPpxlIGjEikoqzvZqB7_-10158KdfxOs",
-    authDomain: "reactreduxtodoappfirebase.firebaseapp.com",
-    databaseURL: "https://reactreduxtodoappfirebase.firebaseio.com",
-    projectId: "reactreduxtodoappfirebase",
-    storageBucket: "",
-    messagingSenderId: "866095779438"
-  };
-firebase.initializeApp(config);
+
 
 const ref = firebase.database().ref('/');
 const auth = firebase.auth();
@@ -27,7 +19,7 @@ class AuthEpic {
                 return Observable.fromPromise(
                     auth.createUserWithEmailAndPassword(payload.email,payload.password)
                     .then((res)=>{
-                        ref.child(`users/${res.uid}`).set(payload);
+                        ref.child(`users/${res.uid}/userData`).set(payload);
                         userCreated = true;
                         // Action Dispatch for reducer to state change , and component render for 
                         // login OK use flages and dispatch at the bottom .map((x)=>{})
@@ -52,7 +44,7 @@ class AuthEpic {
                     auth.signInWithEmailAndPassword(payload.email,payload.password)
                     .then((res)=>{
                         authenticate = true;
-                        localStorage.setItem('uid',res.uid)
+                        // localStorage.setItem('uid',res.uid)
                         // console.log(res.uid)
                         // send  userdata at the end for reducer
                         // ref.child(`users/${res.uid}/`).once('value',(s)=>{

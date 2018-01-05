@@ -6,6 +6,9 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { connect } from 'react-redux'
 import AuthAction from "../../store/actions/authAction";
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+
 const style = {
     margin: 10,
 };
@@ -31,7 +34,8 @@ class RegisterCard extends React.Component {
             phone: '',
             address: '',
             email: '',
-            password: ''
+            password: '',
+            bloodGroup : ''
         }
     }
     render() {
@@ -70,6 +74,21 @@ class RegisterCard extends React.Component {
                     hintText="Password"
                     onChange={(e) => { this.setState({ password: e.target.value }) }}
                 /><br />
+                <SelectField
+                            floatingLabelText="Select Blood Group"
+                            value={this.state.bloodGroup}
+                            onChange={(e, i, val) => { this.setState({ bloodGroup: val }) }}
+                        >
+                            {/* <MenuItem value='' primaryText="Blood Group" disabled /> */}
+                            <MenuItem selected value='A+' primaryText="A+" />
+                            <MenuItem value='B+' primaryText="B+" />
+                            <MenuItem value='AB+' primaryText="AB+" />
+                            <MenuItem value='O+' primaryText="O+" />
+                            <MenuItem value='O-' primaryText="O-" />
+                            <MenuItem value='AB-' primaryText="AB-" />
+                            <MenuItem value='B-' primaryText="B-" />
+                            <MenuItem value='A-' primaryText="A-" />
+                        </SelectField><br />
                 <CardActions>
                         <RaisedButton label="Cancel" style={style} 
                         onClick={this.props.cancel}
@@ -82,7 +101,9 @@ class RegisterCard extends React.Component {
                                 phone: this.state.phone,
                                 address: this.state.address,
                                 email: this.state.email,
-                                password: this.state.password
+                                password: this.state.password,
+                                bloodGroup : this.state.bloodGroup,
+                                photoURL : 'https://i.pinimg.com/originals/93/d3/e3/93d3e31639a4d07613de9dccdc8bd5e8.png'
                             }
                             this.props.creataUser(user)
                         }

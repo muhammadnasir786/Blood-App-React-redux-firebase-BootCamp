@@ -20,3 +20,17 @@ firebase.auth().onAuthStateChanged((user) => {
             }
             console.log("is logged in", this.props.isLogged);
         });
+
+Demo EPic Function
+
+static loginUser = (action$)=>{
+        return action$.ofType()
+        .switchMap(({payload })=>{
+            return Observable.fromPromise(
+               
+            )
+            .map((x)=>{
+                return { type : '' }
+            })
+        })
+    }

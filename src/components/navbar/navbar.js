@@ -23,8 +23,9 @@ class Navbar extends React.Component {
         return (
             <div>
                 <AppBar
+                    style={{ }}
                     onLeftIconButtonClick={this.props.isLogin ? this.handleToggle : () => { alert('Login First') }}
-                    title="User Authentication Boiler Plate"
+                    title="Blood Bank Application React-Redux-Firebase Epic (Middleware)"
                     // iconClassNameRight="muidocs-icon-navigation-expand-more"
                     iconElementRight={<FlatButton onClick={ this.props.isLogin ? ()=>{
                         firebase.auth().signOut().then(()=>{
@@ -40,19 +41,20 @@ class Navbar extends React.Component {
                             var token = result.credential.accessToken;
                             // The signed-in user info.
                             var user = result.user;
-                            console.log(token)
-                            console.log(user)
+                            // console.log(token)
+                            // console.log(user.photoURL)
                             // ...
                             let userData  = {
                                 name : user.displayName,
                                 email : user.email,
-                                phoneNumber :user.phoneNumber,
+                                phone :'user.phoneNumber',
                                 photoURL : user.photoURL,
-                                address : null,
-                                age : 20
+                                address : 'null',
+                                age : 'null',
+                                bloodGroup : "Not Define In Faecbook"
                             }
 
-                             firebase.database().ref('/').child(`users/${user.uid}/`).set(userData).then(()=>{
+                             firebase.database().ref('/').child(`users/${user.uid}/userData`).set(userData).then(()=>{
                             
                                  alert('User Login Successfully')
                              }).catch((e)=>{
@@ -71,7 +73,7 @@ class Navbar extends React.Component {
                             // The firebase.auth.AuthCredential type that was used.
                             var credential = error.credential;
                             console.log(error.code)
-                            console.log(error.message)
+                            alert(error.message)
                             // ...
                         });
                     }}
@@ -92,8 +94,11 @@ class Navbar extends React.Component {
                         subtitle="MERN Stack Developer"
                         avatar={'this.props.user.photoURL'}
                     />
-                    <MenuItem onClick={this.handleClose}>Menu Item</MenuItem>
-                    <MenuItem onClick={this.handleClose}>Menu Item 2</MenuItem>
+                    <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+                    <MenuItem onClick={this.handleClose}>All Post</MenuItem>
+                    <MenuItem onClick={this.handleClose}>Your Post</MenuItem>
+                    <MenuItem onClick={this.handleClose}>Donar List</MenuItem>
+                    <MenuItem onClick={this.handleClose}>Donate Blood Form</MenuItem>
                 </Drawer>
             </div>
         );
