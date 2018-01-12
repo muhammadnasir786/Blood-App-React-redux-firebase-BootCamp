@@ -21,6 +21,8 @@ class DonarList extends Component {
         }
     }
     render() {
+        
+        console.log(this.state.value)
         return (
             <div>
                 <p style={{ fontSize: '20px' }}>Select your Blood Group </p>
@@ -33,7 +35,7 @@ class DonarList extends Component {
                     <MenuItem value='AB+' primaryText="AB+" />
                     <MenuItem value='O+' primaryText="O+" />
                     <MenuItem value='O-' primaryText="O-" />
-                    <MenuItem value='AB_' primaryText="AB-" />
+                    <MenuItem value='AB-' primaryText="AB-" />
                     <MenuItem value='B-' primaryText="B-" />
                     <MenuItem value='A-' primaryText="A-" />
                 </DropDownMenu>
@@ -55,16 +57,23 @@ class DonarList extends Component {
                     <TableBody>
                     
                         {Object.keys(this.props.donarList).map( (val, i)=> {
+                            // console.log(this.props.donarList[val].bloodGroup[0])
                             let donar = this.props.donarList[val];
-                        return (
-                            <TableRow key={i}>
-                                <TableRowColumn>{donar.name}</TableRowColumn>
-                                <TableRowColumn>{donar.phone}</TableRowColumn>
-                                <TableRowColumn> <Avatar src={donar.photoURL} /></TableRowColumn>
-                                <TableRowColumn>{donar.email}</TableRowColumn>
-                                <TableRowColumn>{donar.bloodGroup}</TableRowColumn>
-                            </TableRow>
-                        )
+                            
+                            
+                                {if(this.props.donarList[val].bloodGroup == this.state.value ){
+                                   return <TableRow key={i}>
+                                            {console.log(donar)}
+                                            <TableRowColumn>{donar.name}</TableRowColumn>
+                                            <TableRowColumn>{donar.phone}</TableRowColumn>
+                                            <TableRowColumn><Avatar src={donar.photoURL} /></TableRowColumn>
+                                            <TableRowColumn>{donar.email}</TableRowColumn>
+                                            <TableRowColumn>{donar.bloodGroup}</TableRowColumn>
+                                    </TableRow> 
+                                
+                            }
+                            }
+                        
                         })}
                         {/* {console.log(this.props.donarList)} */}
           

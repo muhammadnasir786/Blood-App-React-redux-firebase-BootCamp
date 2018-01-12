@@ -250,7 +250,7 @@ class YourOnePost extends React.Component {
                 <h2>{post.noOfUnitRequird} unit Required In {post.hospital} <span>{`${post.city} , ${post.country}`}</span> </h2>
                 <p><i>{post.information}</i></p>
                 <p>Contact No : <span>{post.contactNo}</span></p>
-                <p>Urgency : <span>{post.urgency}</span></p>
+                <p>Urgency : <span>{post.urgency} Days</span></p>
                 <p>Relation with Patient : <span>{post.relation}</span></p>
                 <RaisedButton secondary={true} label="DELETE" style={{ margin: 10}} 
                 onClick={()=>{

@@ -14,12 +14,13 @@ const rootEpic = combineEpics(
     AuthEpic.loginUser,
     BBEpic.addPost,
     BBEpic.getPost,
+    BBEpic.deletePost,
+    BBEpic.updatePost,
+    BBEpic.getCancelLogout,
     BBEpic.getProfile,
     BBEpic.profileUpdate,
     BBEpic.addDonar,
     BBEpic.getDonars,
-    BBEpic.deletePost,
-    BBEpic.updatePost
 
     // BBEpic.profileUpdate,
     

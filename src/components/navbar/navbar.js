@@ -10,10 +10,7 @@ import * as firebase from 'firebase'
 import AuthAction from '../../store/actions/authAction'
 class Navbar extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = { open: false };
-    }
+   
 
     handleToggle = () => this.setState({ open: !this.state.open });
     handleClose = () => this.setState({ open: false });
@@ -23,8 +20,8 @@ class Navbar extends React.Component {
         return (
             <div>
                 <AppBar
-                    style={{ }}
-                    onLeftIconButtonClick={this.props.isLogin ? this.handleToggle : () => { alert('Login First') }}
+                    // style={{ }}
+                
                     title="Blood Bank Application React-Redux-Firebase Epic (Middleware)"
                     // iconClassNameRight="muidocs-icon-navigation-expand-more"
                     iconElementRight={<FlatButton onClick={ this.props.isLogin ? ()=>{
@@ -83,23 +80,7 @@ class Navbar extends React.Component {
                     
                      />}
                 />
-                <Drawer
-                    docked={false}
-                    width={260}
-                    open={this.state.open}
-                    onRequestChange={(open) => this.setState({ open })}
-                >
-                    <CardHeader
-                        title={'this.props.user.name'}
-                        subtitle="MERN Stack Developer"
-                        avatar={'this.props.user.photoURL'}
-                    />
-                    <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                    <MenuItem onClick={this.handleClose}>All Post</MenuItem>
-                    <MenuItem onClick={this.handleClose}>Your Post</MenuItem>
-                    <MenuItem onClick={this.handleClose}>Donar List</MenuItem>
-                    <MenuItem onClick={this.handleClose}>Donate Blood Form</MenuItem>
-                </Drawer>
+                
             </div>
         );
     }

@@ -6,6 +6,10 @@ let BB_STATE = {
     yourPost : {},
     donarList : {}
 }
+// O : { } ,
+// A : {},
+// B : {},
+// AB : {}
 
 // (action.payload.postData.uid === firebase.auth().currentUser.uid){
 //     yourPost[action.payload.key] = action.payload.postData;
@@ -54,10 +58,30 @@ let BBReducer = (state = BB_STATE,action)=>{
             console.log(action.payload)
             let donarList = Object.assign({} ,  state.donarList);
             donarList[action.payload.key] = action.payload.donarData;
-        return { ...state , donarList}
+            return { ...state , donarList }
+        case 'LOGOUT' : 
+            return { 
+                allPost : {},
+                profileData : {},
+                yourPost : {},
+                donarList : {}
+             }
         default:
-        return state;
+            return state;
+        }
     }
-}
-
-export default BBReducer;
+    
+    export default BBReducer;
+    // ('O+' === action.payload.donarData.bloodGroup) ? donarList['O+'][action.payload.key] = action.payload.donarData : null
+    // if(action.payload.donarData.bloodGroup === 'O+'|| action.payload.donarData.bloodGroup === 'O-') {
+    //     donarList.O[action.payload.key] = action.payload.donarData;
+    // }
+    // if(action.payload.donarData.bloodGroup === 'A+'|| action.payload.donarData.bloodGroup === 'A-') {
+    //     donarList.A[action.payload.key] = action.payload.donarData;
+    // }
+    // if(action.payload.donarData.bloodGroup === 'B+'|| action.payload.donarData.bloodGroup === 'B-') {
+    //     donarList.B[action.payload.key] = action.payload.donarData;
+    // }
+    // if(action.payload.donarData.bloodGroup === 'AB+'|| action.payload.donarData.bloodGroup === 'AB-') {
+    //     donarList.AB[action.payload.key] = action.payload.donarData;
+    // }

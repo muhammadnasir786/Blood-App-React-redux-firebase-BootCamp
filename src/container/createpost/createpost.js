@@ -96,9 +96,10 @@ class CreatePost extends React.Component {
                         relation:  this.state.relation,
                         contactNo:  this.state.contactNo,
                         information: this.state.information,
-                        userName : firebase.auth().currentUser.displayName,
+                        userName : this.props.profileData.name , 
                         userPhotoURL :this.props.profileData.photoURL,
                         uid: firebase.auth().currentUser.uid,
+
                         // datee : new Date(this.state.date)
                     }
                     this.props.addPost(post);

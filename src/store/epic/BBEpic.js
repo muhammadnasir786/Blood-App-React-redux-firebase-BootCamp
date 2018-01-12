@@ -110,48 +110,48 @@ class BBEpic {
                         })
                     })
 
-                })
+                }).takeUntil(action$.ofType('LOGOUT'));
             })
     }
 
 
 
-    static getPost = (action$) => {
-        return action$.ofType(BBAction.GET_POST)
-            .switchMap(({
-                payload
-            }) => {
-                return new Observable((observer) => {
-                    postRef.on('child_added', (s) => {
-                        observer.next({
-                            type: BBAction.GET_POST_ADD,
-                            payload: {
-                                key: s.key,
-                                postData: s.val()
-                            }
-                        })
-                    })
-                    postRef.on('child_removed', (s) => {
-                        console.log(s.val(), s.key)
-                        observer.next({
-                            type: BBAction.GET_POST_DELETE,
-                            payload: s.key
-                        })
-                    })
-                    postRef.on('child_changed', (s) => {
-                        console.log(s.val(), s.key)
-                        observer.next({
-                            type: BBAction.GET_POST_UPDATE,
-                            payload: {
-                                key: s.key,
-                                postData: s.val()
-                            }
-                        })
-                    })
+    // static getPost = (action$) => {
+    //     return action$.ofType(BBAction.GET_POST)
+    //         .switchMap(({
+    //             payload
+    //         }) => {
+    //             return new Observable((observer) => {
+    //                 postRef.on('child_added', (s) => {
+    //                     observer.next({
+    //                         type: BBAction.GET_POST_ADD,
+    //                         payload: {
+    //                             key: s.key,
+    //                             postData: s.val()
+    //                         }
+    //                     })
+    //                 })
+    //                 postRef.on('child_removed', (s) => {
+    //                     console.log(s.val(), s.key)
+    //                     observer.next({
+    //                         type: BBAction.GET_POST_DELETE,
+    //                         payload: s.key
+    //                     })
+    //                 })
+    //                 postRef.on('child_changed', (s) => {
+    //                     console.log(s.val(), s.key)
+    //                     observer.next({
+    //                         type: BBAction.GET_POST_UPDATE,
+    //                         payload: {
+    //                             key: s.key,
+    //                             postData: s.val()
+    //                         }
+    //                     })
+    //                 })
 
-                })
-            })
-    }
+    //             })
+    //         })
+    // }
 
 
     // static newone = (action$)=>{
@@ -257,6 +257,14 @@ class BBEpic {
             })
     }
 
+    static getCancelLogout = (action$) =>
+            action$.ofType('LOGOUT')
+                .switchMap(({ payload }) => {
+                    ref.off();
+                    postRef.off();
+                    return Observable.of({ type: null})
+                    //we dont want to do any work on GET_TODO_CANCELLED so we are dispatching NULL action
+                })
 
 
 

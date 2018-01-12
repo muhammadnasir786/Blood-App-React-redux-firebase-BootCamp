@@ -23,7 +23,7 @@ class OnePost extends React.Component {
 
     render() {
         let post = this.props.post;
-        console.log(post.userPhotoURL)
+        // console.log(post.userPhotoURL)
     
         return (
             <Card style={cardStyle}>
@@ -33,7 +33,7 @@ class OnePost extends React.Component {
                                 leftAvatar={<Avatar src={post.userPhotoURL} />}
                                 // rightIcon={ <span>Date : 12-2-2019</span>}
                                 >
-                                <p style={{ fontSize : 25  , marginBottom : -15 , marginTop : -5}}>{this.props.profileData.name}</p>
+                                <p style={{ fontSize : 25  , marginBottom : -15 , marginTop : -5}}>{post.userName}</p>
                          </ListItem>
                         </List>
                         <hr/>
@@ -41,7 +41,7 @@ class OnePost extends React.Component {
                 <h2>{post.noOfUnitRequird} unit Required In {post.hospital} <span>{`${post.city} , ${post.country}`}</span> </h2>
                 <p><i>{post.information}</i></p>
                 <p>Contact No : <span>{post.contactNo}</span></p>
-                <p>Urgency : <span>{post.urgency}</span></p>
+                <p>Urgency : <span>{post.urgency}Days</span></p>
                 <p>Relation with Patient : <span>{post.relation}</span></p>
             </Card>
         );
