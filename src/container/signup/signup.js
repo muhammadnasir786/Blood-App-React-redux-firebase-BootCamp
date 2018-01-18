@@ -75,7 +75,7 @@ class RegisterCard extends React.Component {
                     onChange={(e) => { this.setState({ password: e.target.value }) }}
                 /><br />
                 <SelectField
-                            floatingLabelText="Select Blood Group"
+                            hintText="Select Blood Group"
                             value={this.state.bloodGroup}
                             onChange={(e, i, val) => { this.setState({ bloodGroup: val }) }}
                         >

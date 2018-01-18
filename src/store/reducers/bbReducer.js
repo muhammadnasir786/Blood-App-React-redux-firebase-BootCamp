@@ -30,7 +30,7 @@ let BBReducer = (state = BB_STATE,action)=>{
             let allPost = Object.assign({},state.allPost);
             let yourPost = Object.assign({},state.yourPost);
             allPost[action.payload.key] = action.payload.postData;
-            (action.payload.postData.uid === firebase.auth().currentUser.uid) ?  yourPost[action.payload.key] = action.payload.postData : null
+            if(action.payload.postData.uid === firebase.auth().currentUser.uid){ yourPost[action.payload.key] = action.payload.postData }
             return { ...state , allPost , yourPost};
 
         case BBAction.GET_POST_DELETE:

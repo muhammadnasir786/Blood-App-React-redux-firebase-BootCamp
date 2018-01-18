@@ -31,7 +31,7 @@ class AuthEpic {
                     })
                 )
                 .map((x)=>{
-                    return userCreated ? AuthAction.createUserSuccessfully('Naisr') : { type : null}
+                    return userCreated ? AuthAction.createUserSuccessfully() : { type : null}
                 })
             })
         }
@@ -53,12 +53,12 @@ class AuthEpic {
                         //     console.log(userData)
                         // });
                     }).catch((err)=>{
-                        console.log(err)
+                        alert(err.message)
                     })
                 )
                 .map((x)=>{
-                    return { type : AuthAction.LOGIN_USER_SUCCESSFULLY }
-                    // return   authenticate ? AuthAction.loginUserSuccessfully(userData) : {type : null}
+                    return authenticate ? { type : AuthAction.LOGIN_USER_SUCCESSFULLY } :  { type : null }
+                    // return   authenticate ? AuthAction.loginUserSuccessfully() : {type : null}
                 })
             })
         }

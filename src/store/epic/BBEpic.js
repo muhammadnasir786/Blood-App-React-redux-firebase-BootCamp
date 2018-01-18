@@ -3,16 +3,16 @@ import {
 } from 'rxjs'
 import BBAction from "../actions/BBAction";
 import * as firebase from 'firebase'
+// Initialize Firebase
 var config = {
-    apiKey: "AIzaSyDqPpxlIGjEikoqzvZqB7_-10158KdfxOs",
-    authDomain: "reactreduxtodoappfirebase.firebaseapp.com",
-    databaseURL: "https://reactreduxtodoappfirebase.firebaseio.com",
-    projectId: "reactreduxtodoappfirebase",
-    storageBucket: "",
-    messagingSenderId: "866095779438"
-};
-firebase.initializeApp(config);
-
+    apiKey: "AIzaSyCoXcSDt-dENScLwlrhETxDgZGmXeGNHyU",
+    authDomain: "dua-app-23f66.firebaseapp.com",
+    databaseURL: "https://dua-app-23f66.firebaseio.com",
+    projectId: "dua-app-23f66",
+    storageBucket: "dua-app-23f66.appspot.com",
+    messagingSenderId: "184078557881"
+  };
+  firebase.initializeApp(config);
 
 const postRef = firebase.database().ref('/posts');
 const ref = firebase.database().ref('/');
@@ -194,8 +194,8 @@ class BBEpic {
         .switchMap(({payload}) => {
             // console.log()
                 return new Observable((observer) => {
-                    ref.child(`users/${firebase.auth().currentUser.uid}`).on('child_added', (s) => {
-                        // console.log(s.val(), s.key)
+                    ref.child(`users/${firebase.auth().currentUser.uid}/`).on('child_added', (s) => {
+                        console.log(s.val())
                         observer.next({
                             type: BBAction.GET_PROFILE_ADD,
                             payload: {

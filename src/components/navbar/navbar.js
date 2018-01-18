@@ -44,20 +44,20 @@ class Navbar extends React.Component {
                             let userData  = {
                                 name : user.displayName,
                                 email : user.email,
-                                phone :'user.phoneNumber',
+                                phone :'',
                                 photoURL : user.photoURL,
-                                address : 'null',
-                                age : 'null',
+                                address : '',
+                                age : '',
                                 bloodGroup : "Not Define In Faecbook"
                             }
 
                              firebase.database().ref('/').child(`users/${user.uid}/userData`).set(userData).then(()=>{
                             
                                  alert('User Login Successfully')
+                                 this.props.loginSuccess();
                              }).catch((e)=>{
                                 alert(e.message)
                              });
-                            this.props.loginSuccess();
                         
 
 

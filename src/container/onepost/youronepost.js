@@ -247,7 +247,7 @@ class YourOnePost extends React.Component {
                         </List>
                         <hr/>
                 <h3>Blood Group <span style={style}>{post.bloodGroup}</span></h3>
-                <h2>{post.noOfUnitRequird} unit Required In {post.hospital} <span>{`${post.city} , ${post.country}`}</span> </h2>
+                <h2>{post.noOfUnitRequird} unit Required In {post.hospital} Hospital <span>{`${post.city} , ${post.country}`}</span> </h2>
                 <p><i>{post.information}</i></p>
                 <p>Contact No : <span>{post.contactNo}</span></p>
                 <p>Urgency : <span>{post.urgency} Days</span></p>

@@ -104,7 +104,18 @@ class CreatePost extends React.Component {
                     }
                     this.props.addPost(post);
                     // console.log('In Button')
-                    this.setState({ open: false });
+                    this.setState({ open: false,
+                        bloodGroup: 'Select Blood Group ',
+                        noOfUnitRequird: 1,
+                        urgency: '7 days',
+                        country: 'Pakistan',
+                        city: '',
+                        hospital: '',
+                        relation: '',
+                        contactNo: '',
+                        information: '',
+                    
+                    });
                 }}
             />
         ];
