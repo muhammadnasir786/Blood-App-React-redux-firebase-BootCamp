@@ -24,7 +24,11 @@ class AllPost extends React.Component {
                        Object.keys(this.props.allPost).map((val,index)=>{
                            let onePost = this.props.allPost[val];
                            return (
-                               <OnePost key={val} profileData={this.props.profileData}  post={onePost}/>
+                               <OnePost 
+                               key={val} 
+                               profileData={this.props.profileData} 
+                                post={onePost}
+                                currentUser={this.props.currentUser}/>
                            )
                        })
                     }
@@ -38,7 +42,8 @@ class AllPost extends React.Component {
 let mapStateToProps = (state)=>{
     return {
         allPost : state.BBReducer.allPost,
-        profileData : state.BBReducer.profileData
+        profileData : state.BBReducer.profileData,
+        currentUser : state.BBReducer.profileData
     }
 }
 let mapDispatchToProps = (dispatch)=>{

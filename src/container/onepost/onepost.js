@@ -33,7 +33,7 @@ class OnePost extends React.Component {
                                 leftAvatar={<Avatar src={post.userPhotoURL} />}
                                 // rightIcon={ <span>Date : 12-2-2019</span>}
                                 >
-                                <p style={{ fontSize : 25  , marginBottom : -15 , marginTop : -5}}>{post.userName}</p>
+                                <p style={{ fontSize : 25  , marginBottom : -15 , marginTop : -5}}>{this.props.currentUser.name}</p>
                          </ListItem>
                         </List>
                         <hr/>
